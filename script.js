@@ -21,15 +21,15 @@ function startSpel () {
  
 function vakgeklikt (event) {
     const index = event.target.id;
-    if(telZetten < 9) {                    // Vakje wordt gevult zolang er nog geen 9 zetten zijn gedaan
+    if(telZetten < 9) {                    // Vakje wordt gevuld zolang er nog geen 9 zetten zijn gedaan
         opties[index] = huidigeSpeler;
         event.target.innerText = huidigeSpeler
         
         telZetten++
-        eindeSpel()                     // check eindeSpel
+        eindeSpel()                     // check voor winst of gelijkspel
         
         if (huidigeSpeler == O_speler) {
-            huidigeSpeler = X_speler      // Wisselspeler
+            huidigeSpeler = X_speler      // Wissel speler
         }
         else {huidigeSpeler = O_speler}
     }
@@ -52,7 +52,7 @@ function eindeSpel() {
 }
 
 function spelerWint() {
-    for (const conditie of WINNENDECOMBINATIES) {       // checkt of de index in een winnende combinatie gelijk zijn
+    for (const conditie of WINNENDECOMBINATIES) {       // checkt of de index in een winnende combinatie gelijk is
         let [a, b, c] = conditie
 
         if (opties[a] && opties[a] == opties[b] && opties[a] == opties[c]) {
@@ -64,7 +64,7 @@ function spelerWint() {
 
 opnieuwknop.addEventListener("click", opnieuw)
 
-function opnieuw() {                              // Zet spel terug in begin staat
+function opnieuw() {                              // Zet spel terug in beginstaat
     huidigeSpeler = X_speler
     popupGewonnen.classList.remove("show")
     opties = ["", "", "", "", "", "", "", "", ""]
